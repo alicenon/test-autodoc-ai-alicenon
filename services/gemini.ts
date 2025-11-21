@@ -12,8 +12,10 @@ const simplifyTreeForPrompt = (paths: string[]): string => {
 
 const getClient = () => {
     if (!import.meta.env.VITE_GEMINI_API_KEY) { 
+        console.log("VITE_GEMINI_API_KEY:", import.meta.env.VITE_GEMINI_API_KEY);
         throw new Error("API Key is missing.");
     }
+    console.log("VITE_GEMINI_API_KEY:", import.meta.env.VITE_GEMINI_API_KEY);
     return new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY});
 };
 
