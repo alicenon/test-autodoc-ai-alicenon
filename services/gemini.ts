@@ -1,4 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
+// import.meta.env.VITE_GEMINI_API_KEY
+
 
 // Helper to clean the tree for the prompt (reduce tokens)
 const simplifyTreeForPrompt = (paths: string[]): string => {
@@ -6,12 +8,13 @@ const simplifyTreeForPrompt = (paths: string[]): string => {
   const limitedPaths = paths.slice(0, 300);
   return limitedPaths.join('\n');
 };
+// process.env.GEMINI_API_KEY is set in vite.config.ts
 
 const getClient = () => {
-    if (!process.env.GEMINI_API_KEY) {
+    if (!import.meta.env.VITE_GEMINI_API_KEY) { 
         throw new Error("API Key is missing.");
     }
-    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    return new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY});
 };
 
 export const analyzeRepoArchitecture = async (filePaths: string[]): Promise<string> => {
