@@ -8,10 +8,10 @@ const simplifyTreeForPrompt = (paths: string[]): string => {
 };
 
 const getClient = () => {
-    if (!process.env.API_KEY) {
+    if (!process.env.GEMINI_API_KEY) {
         throw new Error("API Key is missing.");
     }
-    return new GoogleGenAI({ apiKey: process.env.API_KEY });
+    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 };
 
 export const analyzeRepoArchitecture = async (filePaths: string[]): Promise<string> => {
