@@ -1,0 +1,4 @@
+{
+  "name": "GitTree AI",
+  "description": "A GitHub repository explorer that visualizes file structures as interactive trees and uses Gemini AI to analyze the project architecture and tech stack."
+}
